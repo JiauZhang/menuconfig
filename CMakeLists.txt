@@ -37,3 +37,5 @@ target_link_libraries(
     menuconfig
     ${FLEX_LIBRARIES} ${BISON_LIBRARIES} ${CURSES_LIBRARY}
 )
+
+install(TARGETS menuconfig)
