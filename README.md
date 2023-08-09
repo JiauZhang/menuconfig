@@ -8,6 +8,6 @@
 ### build and install menuconfig
 ```shell
 mkdir build && cd build
-make menuconfig
+cmake .. && make menuconfig
 sudo make install
 ```
