@@ -1,9 +1,11 @@
-### Installation Dependencies
+## standalone menuconfig from linux kernel
+
+### install dependencies
 ```shell
 ./install_deps
 ```
 
-### Build
+### build and install menuconfig
 ```shell
 mkdir build && cd build
 make menuconfig

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
-# Copyright (C) 2022 JiauZhang <https://github.com/JiauZhang/menuconfig>
+# Copyright (C) 2023 JiauZhang <https://github.com/JiauZhang/menuconfig>
 
 cmake_minimum_required(VERSION 3.10)
 
