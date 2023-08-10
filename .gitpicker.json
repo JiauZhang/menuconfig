@@ -17,7 +17,7 @@
         "lkc.h",
         "mconf.c",
         "menu.c",
-        "parse.y",
+        "parser.y",
         "preprocess.c",
         "symbol.c",
         "util.c"
