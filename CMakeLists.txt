@@ -23,9 +23,10 @@ include_directories(
 )
 add_definitions(-DYYDEBUG=1)
 
-add_executable(
-    menuconfig
-    confdata.c expr.c mconf.c
+add_library(
+    mconf
+    SHARED
+    confdata.c expr.c api.c
     menu.c preprocess.c symbol.c util.c
     lxdialog/checklist.c lxdialog/inputbox.c
     lxdialog/menubox.c lxdialog/textbox.c
@@ -33,8 +34,9 @@ add_executable(
     ${BISON_PARSER_OUTPUTS}
     ${FLEX_LEXER_OUTPUTS}
 )
+add_executable(menuconfig main.c)
 target_link_libraries(
-    menuconfig
+    menuconfig mconf
     ${FLEX_LIBRARIES} ${BISON_LIBRARIES} ${CURSES_LIBRARY}
 )
 
