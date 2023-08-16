@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(menuconfig)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(BISON REQUIRED)
 find_package(FLEX REQUIRED)
@@ -34,7 +36,7 @@ add_library(
     ${BISON_PARSER_OUTPUTS}
     ${FLEX_LEXER_OUTPUTS}
 )
-add_executable(menuconfig main.c)
+add_executable(menuconfig main.cpp)
 target_link_libraries(
     menuconfig mconf
     ${FLEX_LIBRARIES} ${BISON_LIBRARIES} ${CURSES_LIBRARY}

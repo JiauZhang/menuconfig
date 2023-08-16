@@ -1,25 +1,42 @@
-{
-    "file": [
-        "lxdialog/checklist.c",
-        "lxdialog/dialog.h",
-        "lxdialog/inputbox.c",
-        "lxdialog/menubox.c",
-        "lxdialog/textbox.c",
-        "lxdialog/util.c",
-        "lxdialog/yesno.c",
-        "confdata.c",
-        "expr.c",
-        "expr.h",
-        "internal.h",
-        "lexer.l",
-        "list.h",
-        "lkc_proto.h",
-        "lkc.h",
-        "mconf.c",
-        "menu.c",
-        "parser.y",
-        "preprocess.c",
-        "symbol.c",
-        "util.c"
-    ]
-}
+[
+    {
+        "user": "torvalds",
+        "repo": "linux",
+        "branch": "master",
+        "root": "scripts/kconfig",
+        "file": [
+            "lxdialog/checklist.c",
+            "lxdialog/dialog.h",
+            "lxdialog/inputbox.c",
+            "lxdialog/menubox.c",
+            "lxdialog/textbox.c",
+            "lxdialog/util.c",
+            "lxdialog/yesno.c",
+            "confdata.c",
+            "expr.c",
+            "expr.h",
+            "internal.h",
+            "lexer.l",
+            "list.h",
+            "lkc_proto.h",
+            "lkc.h",
+            "mconf.c",
+            "menu.c",
+            "parser.y",
+            "preprocess.c",
+            "symbol.c",
+            "util.c"
+        ],
+        "dir": []
+    },
+    {
+        "user": "p-ranav",
+        "repo": "argparse",
+        "branch": "master",
+        "root": "include/argparse",
+        "file": [
+            "argparse.hpp"
+        ],
+        "dir": []
+    }
+]
