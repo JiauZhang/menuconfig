@@ -4,8 +4,12 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(menuconfig)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_INSTALL_LIBDIR /usr/lib)
+set(CMAKE_INSTALL_BINDIR /usr/bin)
 
 find_package(BISON REQUIRED)
 find_package(FLEX REQUIRED)
@@ -42,4 +46,4 @@ target_link_libraries(
     ${FLEX_LIBRARIES} ${BISON_LIBRARIES} ${CURSES_LIBRARY}
 )
 
-install(TARGETS menuconfig)
+install(TARGETS menuconfig mconf)

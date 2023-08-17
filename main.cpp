@@ -21,8 +21,6 @@ extern int *single_menu_mode_api;
 
 int main(int argc, char **argv)
 {
-    char *mode;
-    int res;
     argparse::ArgumentParser parser("menuconfig options");
 
     parser.add_argument("-s")
@@ -32,7 +30,6 @@ int main(int argc, char **argv)
     parser.add_argument("--kconfig")
         .help("specify the Kconfig file");
 
-    std::cout << "parse args...\n";
     try {
         parser.parse_args(argc, argv);
     } catch (const std::runtime_error& err) {
@@ -41,7 +38,6 @@ int main(int argc, char **argv)
         std::cerr << parser;
         std::exit(1);
     }
-    std::cout << "parse args done!\n";
 
     signal(SIGINT, sig_handler_api);
 
@@ -53,16 +49,15 @@ int main(int argc, char **argv)
 
     std::string kconfig("./Kconfig");
 
-    std::cout << "name_cmdline" << "\n";
-    if (parser.is_used("--kconfig")) {
+    if (parser.is_used("--kconfig"))
         kconfig = parser.get<std::string>("--kconfig");
-        std::cout << kconfig << "\n";
-    }
 
     conf_parse(kconfig.c_str());
     conf_read(NULL);
 
-    mode = getenv("MENUCONFIG_MODE");
+    int res;
+    char *mode = getenv("MENUCONFIG_MODE");
+
     if (mode) {
         if (!strcasecmp(mode, "single_menu"))
             *single_menu_mode_api = 1;
