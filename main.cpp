@@ -17,7 +17,10 @@ extern int *silent_api;
 extern int *single_menu_mode_api;
 }
 
+#include <filesystem>
 #include "argparse.hpp"
+
+namespace fs = std::filesystem;
 
 int main(int argc, char **argv)
 {
@@ -52,6 +55,21 @@ int main(int argc, char **argv)
     if (parser.is_used("--kconfig"))
         kconfig = parser.get<std::string>("--kconfig");
 
+    fs::file_status file_status(fs::status(kconfig));
+
+    if (file_status.type() != fs::file_type::regular) {
+        std::cerr << "Runtime Error:\n";
+        std::cerr << "\tKconfig file: " << kconfig
+            << " is not a regular file!" << std::endl;
+        std::exit(1);
+    }
+
+    fs::path fs_path(kconfig);
+    auto dirname = fs_path.parent_path();
+    auto filename = fs_path.filename();
+
+    fs::current_path(dirname);
+    kconfig = filename;
     conf_parse(kconfig.c_str());
     conf_read(NULL);
 
