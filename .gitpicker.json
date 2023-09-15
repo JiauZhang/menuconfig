@@ -2,7 +2,7 @@
     {
         "user": "torvalds",
         "repo": "linux",
-        "branch": "master",
+        "branch": "9fdfb15a3dbf818e06be514f4abbfc071004cbe7",
         "root": "scripts/kconfig",
         "file": [
             "lxdialog/checklist.c",
@@ -32,7 +32,7 @@
     {
         "user": "p-ranav",
         "repo": "argparse",
-        "branch": "master",
+        "branch": "b0930ab0288185815d6dc67af59de7014a6272f7",
         "root": "include/argparse",
         "file": [
             "argparse.hpp"

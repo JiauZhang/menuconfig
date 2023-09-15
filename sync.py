@@ -1,4 +1,4 @@
-import os, json, shutil
+import json, shutil
 import gitpicker as gp
 
 jdata = json.load(open('.gitpicker.json'))
@@ -12,7 +12,7 @@ for files in jdata:
     user = files['user']
     repo = files['repo']
     branch = files['branch']
-    picker = gp.Picker(user, repo, branch, remote_files)
+    picker = gp.GitHub(user, repo, branch, remote_files)
     picker.pick()
 
     for src, des in zip(remote_files['file'], files['file']):
