@@ -2,7 +2,7 @@
     {
         "user": "torvalds",
         "repo": "linux",
-        "branch": "861deac3b092f37b2c5e6871732f3e11486f7082",
+        "branch": "610a9b8f49fbcf1100716370d3b5f6f884a2835a",
         "root": "scripts/kconfig",
         "file": [
             "lxdialog/checklist.c",
