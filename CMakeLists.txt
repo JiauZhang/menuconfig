@@ -32,7 +32,7 @@ add_definitions(-DYYDEBUG=1)
 add_library(
     mconf
     SHARED
-    confdata.c expr.c api.c
+    confdata.c expr.c api.c mnconf-common.c
     menu.c preprocess.c symbol.c util.c
     lxdialog/checklist.c lxdialog/inputbox.c
     lxdialog/menubox.c lxdialog/textbox.c

@@ -22,6 +22,8 @@
             "lkc.h",
             "mconf.c",
             "menu.c",
+            "mnconf-common.h",
+            "mnconf-common.c",
             "parser.y",
             "preprocess.c",
             "symbol.c",
