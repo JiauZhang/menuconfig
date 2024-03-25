@@ -29,6 +29,7 @@
             "mnconf-common.c",
             "parser.y",
             "preprocess.c",
+            "preprocess.h",
             "symbol.c",
             "util.c"
         ],
