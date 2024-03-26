@@ -60,7 +60,9 @@ int main(int argc, char **argv)
     if (file_status.type() != fs::file_type::regular) {
         std::cerr << "Runtime Error:\n";
         std::cerr << "\tKconfig file: " << kconfig
-            << " is not a regular file!" << std::endl;
+            << " is not a regular file!\n" << std::endl;
+        if (!parser.is_used("--kconfig"))
+            std::cout << parser << std::endl;
         std::exit(1);
     }
 
