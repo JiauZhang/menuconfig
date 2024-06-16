@@ -38,7 +38,7 @@
     {
         "user": "p-ranav",
         "repo": "argparse",
-        "branch": "e462ab980c0852bd1df2ee1f4ec81826246b6f21",
+        "branch": "a2b4d27989177466d4ceceba05e8278f9da498f2",
         "root": "include/argparse",
         "file": [
             "argparse.hpp"
