@@ -7,15 +7,11 @@
             {
                 "root": "scripts/kconfig",
                 "file": [
-                    "array_size.h",
                     "confdata.c",
                     "expr.c",
                     "expr.h",
-                    "hashtable.h",
                     "internal.h",
                     "lexer.l",
-                    "list.h",
-                    "list_types.h",
                     "lkc_proto.h",
                     "lkc.h",
                     "mconf.c",
