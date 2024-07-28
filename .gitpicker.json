@@ -3,46 +3,70 @@
         "user": "torvalds",
         "repo": "linux",
         "branch": "2c9b3512402ed192d1f43f4531fb5da947e72bd0",
-        "root": "scripts/kconfig",
-        "file": [
-            "lxdialog/checklist.c",
-            "lxdialog/dialog.h",
-            "lxdialog/inputbox.c",
-            "lxdialog/menubox.c",
-            "lxdialog/textbox.c",
-            "lxdialog/util.c",
-            "lxdialog/yesno.c",
-            "array_size.h",
-            "confdata.c",
-            "expr.c",
-            "expr.h",
-            "hashtable.h",
-            "internal.h",
-            "lexer.l",
-            "list.h",
-            "list_types.h",
-            "lkc_proto.h",
-            "lkc.h",
-            "mconf.c",
-            "menu.c",
-            "mnconf-common.h",
-            "mnconf-common.c",
-            "parser.y",
-            "preprocess.c",
-            "preprocess.h",
-            "symbol.c",
-            "util.c"
-        ],
-        "dir": []
+        "data": [
+            {
+                "root": "scripts/kconfig",
+                "file": [
+                    "array_size.h",
+                    "confdata.c",
+                    "expr.c",
+                    "expr.h",
+                    "hashtable.h",
+                    "internal.h",
+                    "lexer.l",
+                    "list.h",
+                    "list_types.h",
+                    "lkc_proto.h",
+                    "lkc.h",
+                    "mconf.c",
+                    "menu.c",
+                    "mnconf-common.h",
+                    "mnconf-common.c",
+                    "parser.y",
+                    "preprocess.c",
+                    "preprocess.h",
+                    "symbol.c",
+                    "util.c"
+                ],
+                "dir": "."
+            },
+            {
+                "root": "scripts/kconfig/lxdialog",
+                "file": [
+                    "checklist.c",
+                    "dialog.h",
+                    "inputbox.c",
+                    "menubox.c",
+                    "textbox.c",
+                    "util.c",
+                    "yesno.c"
+                ],
+                "dir": "lxdialog"
+            },
+            {
+                "root": "scripts/include",
+                "file": [
+                    "array_size.h",
+                    "hashtable.h",
+                    "list.h",
+                    "list_types.h"
+                ],
+                "dir": "."
+            }
+        ]
     },
     {
         "user": "p-ranav",
         "repo": "argparse",
         "branch": "1b27c6f3da8204a2d130d9b0308c485e46b762a9",
-        "root": "include/argparse",
-        "file": [
-            "argparse.hpp"
-        ],
-        "dir": []
+        "data": [
+            {
+                "root": "include/argparse",
+                "file": [
+                    "argparse.hpp"
+                ],
+                "dir": "."
+            }
+        ]
     }
 ]
