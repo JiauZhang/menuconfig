@@ -43,9 +43,11 @@
                 "root": "scripts/include",
                 "file": [
                     "array_size.h",
+                    "hash.h",
                     "hashtable.h",
                     "list.h",
-                    "list_types.h"
+                    "list_types.h",
+                    "xalloc.h"
                 ],
                 "dir": "."
             }
