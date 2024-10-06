@@ -2,7 +2,7 @@
     {
         "user": "torvalds",
         "repo": "linux",
-        "branch": "9852d85ec9d492ebef56dc5f229416c925758edc",
+        "branch": "8f602276d3902642fdc3429b548d73c745446601",
         "data": [
             {
                 "root": "scripts/kconfig",
