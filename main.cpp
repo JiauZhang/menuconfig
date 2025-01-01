@@ -12,7 +12,6 @@ extern void set_config_filename_api(const char *config_filename);
 extern void conf_message_callback_api(const char *s);
 extern void conf_api(struct menu *menu, struct menu *active_menu);
 extern int handle_exit_api(void);
-
 extern int *silent_api;
 extern int *single_menu_mode_api;
 }
@@ -108,10 +107,19 @@ int main(int argc, char **argv)
         res = handle_exit_api();
     } while (res == KEY_ESC);
 
-    std::string command = "menuconfig-conf --syncconfig " + kconfig_file.string();
-    if (parser["--syncconfig"] == true && std::system(command.c_str()) < 0) {
-        fprintf(stderr, "syncconfig failed!\n");
-        return -1;
+    if (parser["--syncconfig"] == true) {
+        if (!fs::exists(getenv(KCONFIG_CONFIG))) {
+            fprintf(stderr, "***\n");
+            fprintf(stderr, "Configuration file .config not found! Please run `make menuconfig`.\n");
+            fprintf(stderr, "***\n");
+            return -1;
+        }
+        bool need_sync = fs::exists(getenv(KCONFIG_AUTOCONFIG));
+        if (need_sync)
+            need_sync =  need_sync &&
+                fs::last_write_time(getenv(KCONFIG_CONFIG)) > fs::last_write_time(getenv(KCONFIG_AUTOCONFIG));
+        if (need_sync)
+            res = conf_write_autoconf(1);
     }
 
     return res;
