@@ -1,54 +1,51 @@
 # SPDX-License-Identifier: GPL-2.0
-
-config MODULES
-	bool "Enable loadable module support"
-	modules
+config A
+	bool "A"
 	default y
 
+config A0
+	bool "A0"
+	depends on A
+	default y
+	help
+	  This depends on A, so should be a submenu of A.
+
+config A0_0
+	bool "A1_0"
+	depends on A0
+	help
+	  Submenus are created recursively.
+	  This should be a submenu of A0.
+
+config A1
+	bool "A1"
+	depends on A
+	default y
+	help
+	  This should line up with A0.
+
 choice
-	prompt "boolean choice"
-	default BOOL_CHOICE1
+	prompt "choice"
+	depends on A1
+	help
+	  Choice should become a submenu as well.
 
-config BOOL_CHOICE0
-	bool "choice 0"
+config A1_0
+	bool "A1_0"
 
-config BOOL_CHOICE1
-	bool "choice 1"
+config A1_1
+	bool "A1_1"
 
 endchoice
 
-choice
-	prompt "optional boolean choice"
-	default OPT_BOOL_CHOICE1
+config B
+	bool "B"
+	help
+	  This is independent of A.
 
-config OPT_BOOL_CHOICE0
-	bool "choice 0"
-
-config OPT_BOOL_CHOICE1
-	bool "choice 1"
-
-endchoice
-
-choice
-	prompt "tristate choice"
-	default TRI_CHOICE1
-
-config TRI_CHOICE0
-	tristate "choice 0"
-
-config TRI_CHOICE1
-	tristate "choice 1"
-
-endchoice
-
-choice
-	prompt "optional tristate choice"
-	default OPT_TRI_CHOICE1
-
-config OPT_TRI_CHOICE0
-	tristate "choice 0"
-
-config OPT_TRI_CHOICE1
-	tristate "choice 1"
-
-endchoice
+config C
+	bool "C"
+	depends on A
+	help
+	  This depends on A, but not a consecutive item, so can/should not
+	  be a submenu.

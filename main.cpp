@@ -17,6 +17,7 @@ extern int *silent_api;
 extern int *single_menu_mode_api;
 }
 
+#include <cstdlib>
 #include <filesystem>
 #include "argparse.hpp"
 
@@ -26,8 +27,12 @@ int main(int argc, char **argv)
 {
     argparse::ArgumentParser parser("menuconfig options");
 
-    parser.add_argument("-s")
+    parser.add_argument("--verbose")
         .help("change output verbosity")
+        .default_value(false)
+        .implicit_value(true);
+    parser.add_argument("--syncconfig")
+        .help("generates configuration in include/{generated/,config/}")
         .default_value(false)
         .implicit_value(true);
     parser.add_argument("--kconfig")
@@ -42,15 +47,23 @@ int main(int argc, char **argv)
         std::exit(1);
     }
 
+    const char *KCONFIG_CONFIG = "KCONFIG_CONFIG";
+    const char *KCONFIG_AUTOCONFIG = "KCONFIG_AUTOCONFIG";
+    const char *KCONFIG_AUTOHEADER = "KCONFIG_AUTOHEADER";
+
+    setenv(KCONFIG_CONFIG, ".config", 1);
+    setenv(KCONFIG_AUTOCONFIG, "include/config/auto.conf", 1);
+    setenv(KCONFIG_AUTOHEADER, "include/generated/autoconf.h", 1);
+
     signal(SIGINT, sig_handler_api);
 
-    if (parser["-s"] == true) {
+    if (parser["--verbose"] == false) {
         *silent_api = 1;
         /* Silence conf_read() until the real callback is set up */
         conf_set_message_callback(NULL);
     }
 
-    std::string kconfig("./Kconfig");
+    std::string kconfig("Kconfig");
 
     if (parser.is_used("--kconfig"))
         kconfig = parser.get<std::string>("--kconfig");
@@ -66,14 +79,13 @@ int main(int argc, char **argv)
         std::exit(1);
     }
 
-    fs::path fs_path(kconfig);
-    auto dirname = fs_path.parent_path();
-    auto filename = fs_path.filename();
+    fs::path kconfig_file = fs::absolute(fs::path(kconfig));
+    fs::path dirname = kconfig_file.parent_path();
+    fs::path dot_config_file = dirname / fs::path(".config");
 
     fs::current_path(dirname);
-    kconfig = filename;
-    conf_parse(kconfig.c_str());
-    conf_read(NULL);
+    conf_parse(kconfig_file.c_str());
+    conf_read(dot_config_file.c_str());
 
     int res;
     char *mode = getenv("MENUCONFIG_MODE");
@@ -95,6 +107,12 @@ int main(int argc, char **argv)
         conf_api(&rootmenu, NULL);
         res = handle_exit_api();
     } while (res == KEY_ESC);
+
+    std::string command = "menuconfig-conf --syncconfig " + kconfig_file.string();
+    if (parser["--syncconfig"] == true && std::system(command.c_str()) < 0) {
+        fprintf(stderr, "syncconfig failed!\n");
+        return -1;
+    }
 
     return res;
 }
