@@ -114,11 +114,9 @@ int main(int argc, char **argv)
             fprintf(stderr, "***\n");
             return -1;
         }
-        bool need_sync = fs::exists(getenv(KCONFIG_AUTOCONFIG));
-        if (need_sync)
-            need_sync =  need_sync &&
-                fs::last_write_time(getenv(KCONFIG_CONFIG)) > fs::last_write_time(getenv(KCONFIG_AUTOCONFIG));
-        if (need_sync)
+        bool need_sync = !fs::exists(getenv(KCONFIG_AUTOCONFIG));
+        if (need_sync ||
+            (fs::last_write_time(getenv(KCONFIG_CONFIG)) > fs::last_write_time(getenv(KCONFIG_AUTOCONFIG))))
             res = conf_write_autoconf(1);
     }
 

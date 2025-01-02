@@ -30,7 +30,7 @@ include_directories(
 add_definitions(-DYYDEBUG=1)
 
 add_library(
-    conf-objs
+    menuconfig-objs
     SHARED
     confdata.c expr.c api.c mnconf-common.c
     menu.c preprocess.c symbol.c util.c
@@ -41,14 +41,14 @@ add_library(
     ${FLEX_LEXER_OUTPUTS}
 )
 target_link_libraries(
-    conf-objs
+    menuconfig-objs
     ${FLEX_LIBRARIES} ${BISON_LIBRARIES} ${CURSES_LIBRARY}
 )
 
 add_executable(menuconfig main.cpp)
-target_link_libraries(menuconfig conf-objs)
+target_link_libraries(menuconfig menuconfig-objs)
 
-add_executable(menuconfig-conf conf.c)
-target_link_libraries(menuconfig-conf conf-objs)
+add_executable(menuconfig-tool conf.c)
+target_link_libraries(menuconfig-tool menuconfig-objs)
 
-install(TARGETS menuconfig menuconfig-conf conf-objs)
+install(TARGETS menuconfig menuconfig-tool menuconfig-objs)
