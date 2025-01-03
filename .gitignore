@@ -33,3 +33,9 @@
 
 # CMake
 **/build/*
+
+# menuconfig generated file
+include/generated
+include/config
+.config
+.config.old

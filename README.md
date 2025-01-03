@@ -5,12 +5,14 @@
 
 ### Usage
 ```shell
+# shows help message
+menuconfig --help
 # menuconfig will save .config in the same folder as YOUR_KCONFIG_FILE
-# and generate headers in include/generated/*
+# and generate configuration in include/{generated/,config/}
 # default to read ./Kconfig
-menuconfig
+menuconfig --syncconfig
 # manually specify
-menuconfig --kconfig YOUR_KCONFIG_FILE
+menuconfig --syncconfig --kconfig YOUR_KCONFIG_FILE
 ```
 
 ### Install dependencies
@@ -21,7 +23,7 @@ menuconfig --kconfig YOUR_KCONFIG_FILE
 ### Build and Install menuconfig
 ```shell
 mkdir build && cd build
-cmake .. && make menuconfig
+cmake .. && make -j
 sudo make install
 ```
 
@@ -34,7 +36,7 @@ sudo make install
     </thead>
     <tbody align="center" valign="center">
         <tr>
-            <td colspan="2"><img src="https://www.chatqkv.com/ghstatic/images/ofa_m.png" style="height: 196px" alt="AliPay.png"></td>
+            <td colspan="2"><img src="https://jiauzhang.github.io/ghstatic/images/ofa_m.png" style="height: 196px" alt="AliPay.png"></td>
         </tr>
     </tbody>
     <thead>
@@ -45,8 +47,8 @@ sudo make install
     </thead>
     <tbody align="center" valign="center">
         <tr>
-            <td><img src="https://www.chatqkv.com/AliPay.png" style="width: 196px; height: 196px" alt="AliPay.png"></td>
-            <td><img src="https://www.chatqkv.com/WeChatPay.png" style="width: 196px; height: 196px" alt="WeChatPay.png"></td>
+            <td><img src="https://jiauzhang.github.io/AliPay.png" style="width: 196px; height: 196px" alt="AliPay.png"></td>
+            <td><img src="https://jiauzhang.github.io/WeChatPay.png" style="width: 196px; height: 196px" alt="WeChatPay.png"></td>
         </tr>
     </tbody>
 </table>

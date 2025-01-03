@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 
     fs::path kconfig_file = fs::absolute(fs::path(kconfig));
     fs::path dirname = kconfig_file.parent_path();
-    fs::path dot_config_file = dirname / fs::path(".config");
+    fs::path dot_config_file = dirname / fs::path(getenv(KCONFIG_CONFIG));
 
     fs::current_path(dirname);
     conf_parse(kconfig_file.c_str());
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
     if (parser["--syncconfig"] == true) {
         if (!fs::exists(getenv(KCONFIG_CONFIG))) {
             fprintf(stderr, "***\n");
-            fprintf(stderr, "Configuration file .config not found! Please run `make menuconfig`.\n");
+            fprintf(stderr, "Configuration file .config not found! Please run `menuconfig`.\n");
             fprintf(stderr, "***\n");
             return -1;
         }
