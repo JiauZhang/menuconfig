@@ -2,7 +2,8 @@
     {
         "user": "torvalds",
         "repo": "linux",
-        "branch": "b4432656b36e5cc1d50a1f2dc15357543add530e",
+        "branch": "master",
+        "oid": "b4432656b36e5cc1d50a1f2dc15357543add530e",
         "data": [
             {
                 "root": "scripts/kconfig",
@@ -57,7 +58,8 @@
     {
         "user": "p-ranav",
         "repo": "argparse",
-        "branch": "d924b84eba1f0f0adf38b20b7b4829f6f65b6570",
+        "branch": "master",
+        "oid": "d924b84eba1f0f0adf38b20b7b4829f6f65b6570",
         "data": [
             {
                 "root": "include/argparse",
