@@ -3,7 +3,7 @@
         "user": "torvalds",
         "repo": "linux",
         "branch": "master",
-        "oid": "b4432656b36e5cc1d50a1f2dc15357543add530e",
+        "oid": "e8ab83e34bdc458b5cd77f201e4ed04807978fb1",
         "data": [
             {
                 "root": "scripts/kconfig",
